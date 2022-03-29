@@ -17,5 +17,8 @@ test = as.double(h5ts$image)
 dim(test) = c(28*28, 10000)
 test = as.data.frame(t(test))
 label = factor(as.character(h5ts$label))
-M=matrix(train[,1],nrow=28)
+
+dim(train[1,])
+
+M=matrix(train[1,],nrow=28)
 image(z=M,useRaster=TRUE)

@@ -14,4 +14,4 @@ echo "loaded R"
 #time Rscript mnist_rf.R --args 16
 #time Rscript mnist_rf.R --args 32
 #time Rscript mnist_rf.R --args 64
-time Rscript mnist_read.R --args 128
+Rscript mnist_read.R --args 128
