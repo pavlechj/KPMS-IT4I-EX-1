@@ -6,13 +6,13 @@ dir = "/scratch/project/dd-21-42/data/mnist/"
 ## Requires kaggle log on
 ## 
 library(rhdf5)
-h5tr = H5Fopen(paste0(dir, "train.hdf5",native=TRUE))
+h5tr = H5Fopen(paste0(dir, "train.hdf5",flags="H5F_ACC_RDONLY"))
 train = as.double(h5tr$image)
 dim(train) = c(28*28, 60000)
 train = as.data.frame(t(train))
 label = factor(as.character(h5tr$label))
 
-h5ts = H5Fopen(paste0(dir, "test.hdf5",native=TRUE))
+h5ts = H5Fopen(paste0(dir, "test.hdf5",flags="H5F_ACC_RDONLY"))
 test = as.double(h5ts$image)
 dim(test) = c(28*28, 10000)
 test = as.data.frame(t(test))
