@@ -20,5 +20,5 @@ label = factor(as.character(h5ts$label))
 
 dim(train[1,])
 
-M=matrix(train[1,],nrow=28)
+M=matrix(as.numeric(test[1,]),nrow=28)
 image(z=M,useRaster=TRUE)
