@@ -1,3 +1,4 @@
+rm(list=ls())
 dir = "/scratch/project/dd-21-42/data/mnist/"
 ## Data from:
 ## https://www.kaggle.com/benedictwilkinsai/mnist-hd5f0
