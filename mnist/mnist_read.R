@@ -27,7 +27,7 @@ test_lab = factor(as.character(h5ts$label))
 
 for (i in c(1:5)){
   M=matrix(as.numeric(test[i,]),nrow=28)
-  M=M[c(28:1),]
+  M=M[,c(28:1)]
   image(z=M,useRaster=TRUE)
 }
 
