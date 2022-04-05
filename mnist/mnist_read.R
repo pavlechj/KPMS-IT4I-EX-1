@@ -24,3 +24,10 @@ test_lab = factor(as.character(h5ts$label))
 ## image pixels are variables, so they are columns
 ## conversion as.double() is needed because original storage is raw bytes
 ## 
+
+for (i in c(1:5)){
+  M=matrix(as.numeric(test[i,]),nrow=28)
+  M=M[c(28:1),]
+  image(z=M,useRaster=TRUE)
+}
+
