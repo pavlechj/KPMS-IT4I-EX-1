@@ -5,7 +5,7 @@
 #PBS -e balance.e
 #PBS -o balance.o
 
-cd ~/KPMS-IT4I-EX/mpi
+cd ~/KPMS-IT4I-EX-1/mpi
 pwd
 
 ## module names can vary on different platforms

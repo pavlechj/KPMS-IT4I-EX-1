@@ -5,7 +5,7 @@
 #PBS -e rf_mpi.e
 #PBS -o rf_mpi.o
 
-cd ~/KPMS-IT4I-EX/mpi
+cd ~/KPMS-IT4I-EX-1/mpi
 pwd
 
 module load R
