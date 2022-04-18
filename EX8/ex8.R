@@ -3,6 +3,7 @@ source("../mnist/mnist_read.R")
 source("../code/flexiblas_setup.r")
 setback("OPENBLAS")
 suppressMessages(library(pbdIO))
+suppressMessages(library(ggplot2))
 comm.set.seed(seed = 123, diff = TRUE)
 
 
