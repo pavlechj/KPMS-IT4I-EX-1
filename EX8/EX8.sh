@@ -5,7 +5,7 @@
 #PBS -e ex8.e
 #PBS -o ex8.o
 
-cd ~/ASwR/ex8
+cd ~/KPMS-IT4I-EX-1/EX8
 pwd
 
 module load R
