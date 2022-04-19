@@ -122,7 +122,9 @@ comm.print(err/(nrow(train)))
 if(comm.rank() == 0) {
   #print(pct_pars)
   print(err/nrow(train))
-  ggplot(data.frame(pct = pct_pars, error = err/nrow(train)), aes(pct, error)) +
+  typeof(pct_pars)
+  typeof(err)
+  ggplot(data.frame(pct = pct_pars$pct, error = err/nrow(train)), aes(pct, error)) +
     geom_point() + geom_smooth() + labs(title = "Loess smooth with 95% CI of crossvalidation")
   }
 
