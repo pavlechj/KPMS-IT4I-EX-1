@@ -120,6 +120,8 @@ all_err=allgather(unlist(pct_err))
 err = tapply(unlist(all_err), pct_pars[, "pct"], sum)
 comm.print(err/(nrow(train)))
 if(comm.rank() == 0) {
+  print(pct_pars)
+  print(err/nrow(train))
   ggplot(data.frame(pct = pct_pars, error = err/nrow(train)), aes(pct, error)) +
     geom_point() + geom_smooth() + labs(title = "Loess smooth with 95% CI of crossvalidation")
   }
