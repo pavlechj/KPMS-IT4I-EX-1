@@ -53,3 +53,16 @@ A crossvalidation code with mclapply was added: `mpi/mnist_svd_cv.R` and its qsu
     * `comm.cat("class(var1)", class(var1), "\n")`  
     * `comm.cat("dim(var1)", dim(var1), "\n")`  
 * Remove prints in a section that runs fine so you don't get overwhelmed with output.
+
+**Notes from Questions:**
+
+A question came up that notes the above `pars` combination ends up with too few instances for parallelism and fails in the `apply` function due to empty combinations.
+
+To expose more parallel opportunity, use both folds and par combinations, which are all independent computations. So chunk up all the rows of cv and not only par, as follows:
+
+my_index = comm.chunk(nrow(cv), form = "vector")
+
+Do this after the cv data frame is formed with expand.grid(). The data frame has two columns named “par” and “fold”, which the function fold_err will access correctly, when given my_index.
+
+For this exercise we’ll just make sure all ranks are getting work. But in general, when there is a possibility of not getting work, the code needs to anticipate this and handle it without failing. We can ignore this complication for now.
+
