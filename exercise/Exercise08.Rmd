@@ -56,6 +56,7 @@ A crossvalidation code with mclapply was added: `mpi/mnist_svd_cv.R` and its qsu
 
 **Notes from Questions:**
 
+**Note1**  
 A question came up that notes the above `pars` combination ends up with too few instances for parallelism and fails in the `apply` function due to empty combinations.
 
 To expose more parallel opportunity, use both folds and par combinations, which are all independent computations. So chunk up all the rows of cv and not only par, as follows:
@@ -66,3 +67,22 @@ Do this after the cv data frame is formed with expand.grid(). The data frame has
 
 For this exercise we’ll just make sure all ranks are getting work. But in general, when there is a possibility of not getting work, the code needs to anticipate this and handle it without failing. We can ignore this complication for now.
 
+**Note2**  
+Be aware what objects are replicated and what objects are distributed (local) among the ranks. I often add the `my_` prefix to the local objects to remind me of this.
+
+In tabulating the fold errors together with `tapply()`, this can be done after the `allgather()` or before the `allgather()`:
+
+Before:  
+ `my_cv_err_par = tapply(unlist(cv_err), cv[my_index, "par"], sum)`  
+ `cv_err_par = allgather(my_cv_err_par)`  
+ 
+After:  
+ `cv_err = allgather(my_cv_err)`  
+ `cv_err_par = tapply(unlist(cv_err), cv[, "par"], sum)`  
+
+Before the `allgather()`, the tabulation needs to refer only to the local parts of `cv`, so you must subset the replicated `cv` with `my_index`.
+
+But the "before" solution has one more wrinkle. The resulting `cv_err_par` can have duplicate `par` values that need further handling. The "after" solution does not have this issue.
+
+**Note3**  
+By default, FlexiBLAS backend is OpenBLAS, which is great as that is the fast library. The default number of threads on Karolina's compute nodes appears to be 16, which is not bad for our application so it is okay to leave it alone. But we did find that for the specific application our optimum was 4 threads so taking it down a little might be beneficial. If you happen to blend mclapply fork together with MPI and this multithreading, you might even find that taking it down to 1 gives a slightly better result.
