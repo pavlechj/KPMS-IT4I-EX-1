@@ -1,10 +1,10 @@
 #!/bin/bash
-#PBS -N mnist_svd_cv_mpi
+#PBS -N mnist_read_mpi
 #PBS -l select=2:mpiprocs=32
 #PBS -l walltime=00:25:00
 #PBS -q qexp
-#PBS -e mnist_svd_cv_mpi.e
-#PBS -o mnist_svd_cv_mpi.o
+#PBS -e mnist_read_mpi.e
+#PBS -o mnist_read_mpi.o
 
 cd ~/KPMS-IT4I-EX/mpi
 pwd
