@@ -11,6 +11,6 @@ dmat_train = new("ddmatrix", Data = my_train, dim = gdim,
 cyclic_train = as.blockcyclic(dmat_train)
 
 rsvd_train = rsvd(cyclic_train, k = 10, q = 3, retu = FALSE, retv = FALSE)
-comm.cat("rsvd top(5) singular values:", rsvd_train$d, "\n")
+comm.cat("rsvd top 10 singular values:", rsvd_train$d, "\n")
 
 finalize()
