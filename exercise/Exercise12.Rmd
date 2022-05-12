@@ -16,3 +16,9 @@ Produce a scaling graph for the `mnist_rsvd.R` code.
 **Notes:**
 
 Next lecture is May 18, in-person. In the meantime, I am available for questions about the above exercise via emal at `gostrouc@utk.edu`, and will post the answers here so that everyone benefits.
+
+**Note1**
+
+What is a scaling graph for a parallel code? 
+
+It shows how the run time of a code changes as we give it more cores or nodes. An example is on slide 16 of Lecture 3.
