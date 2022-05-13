@@ -6,7 +6,7 @@
 #PBS -e mnist_read_mpi.e
 #PBS -o mnist_read_mpi.o
 
-cd ~/KPMS-IT4I-EX/mpi
+cd ~/KPMS-IT4I-EX-1/mpi
 pwd
 
 module load R
